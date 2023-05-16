@@ -50,7 +50,8 @@ class Bot extends Maker {
                     name: 'Estadísticas',
                     value: [
                         `Servidores:${d.bot.guilds.size ?? 0} servidores`,
-                        `Usuarios totales:${d.bot.users.size ?? 0} usuarios`
+                        `Usuarios totales:${d.bot.users.size ?? 0} usuarios`,
+                        `Comandos:${d.bot.fold.getAllCommands().length}`
                     ].map((str: string) => `**${str.split(':')[0]}**: ${str.split(':')[1]}`).join('\n')
                 },{
                     name: 'Sistema',

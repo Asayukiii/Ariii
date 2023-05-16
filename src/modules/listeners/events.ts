@@ -27,6 +27,23 @@ class Listeners extends Maker {
                     color: 0xCCE5FF
                 }]
             })
+        } else if (error instanceof Errors.InvalidParamMember) {
+            await error.ctx.send({
+                embeds: [{
+                    title: "¡Miembro inválido!",
+                    description: `El parámetro: **${error.param.name}** debe ser un miembro real.`,
+                    fields: [{
+                        name: 'Información',
+                        value: [
+                            `Nombre:${error.param.name}`,
+                            `Descripción:${error.param.description}`,
+                            `Tipo:${error.param.required ? 'Requerido' : 'No requerido'}`,
+                            `AppCmdType:${error.param.type}`
+                        ].map((str: string) => `**${str.split(':')[0]}**: ${str.split(':')[1]}`).join('\n')
+                    }],
+                    color: 0xCCE5FF
+                }]
+            })
         }
     }
 }
