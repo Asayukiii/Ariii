@@ -1,19 +1,23 @@
 import { CommandInteraction, Context, Erine, Message } from 'erine';
 import { Database } from 'midb';
 import { ErisaOptions } from '../typing';
+import { client } from '../index';
 
 export class Erisa extends Erine {
-    public readonly _options_: ErisaOptions;
+    public readonly database: Database;
     constructor(options: ErisaOptions) {
         super(options);
-        this._options_ = options
+        this.database = new Database(options.database);
+        this._init();
+    }
+    private _init(): void {
+        this.database.on('ready', () => console.log('Database connected!'));
+        this.database.start();
     }
 }
 
 export class CustomContext extends Context {
-    public readonly database: Database;
-    constructor (client: Erisa, data: CommandInteraction | Message) {
-        super(client, data);
-        this.database = new Database(client._options_.database);
+    get db() {
+        return client.database
     }
 }

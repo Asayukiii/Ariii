@@ -1,5 +1,6 @@
 # Folds
 node_modules
+src/db
 
 # Archive
 pnpm-lock.yaml

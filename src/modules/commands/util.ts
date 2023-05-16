@@ -1,4 +1,5 @@
 import { Context, Command, Group, Maker, Param, ParamType } from 'erine';
+import { CustomContext } from '../../classes/client';
 
 class Util extends Maker {
     @Group({ name: 'util', fallback: true })
@@ -13,7 +14,7 @@ class Util extends Maker {
         required: true,
         ellipsis: true
     })
-    async ping(d: Context) {
+    async ping(d: CustomContext) {
         const text = d.get<string>('script');
         await d.send(text!);
     }

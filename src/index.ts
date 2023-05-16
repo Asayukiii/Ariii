@@ -1,5 +1,5 @@
 import { ActivityTypes } from 'erine';
-import { Erisa, CustomContext } from './classes/client';
+import { CustomContext, Erisa } from './classes/client';
 import { data } from './modules/listeners/events';
 import dotenv from 'dotenv';
 
@@ -33,10 +33,12 @@ const client = new Erisa({
         tables: ['members', 'guilds', 'users']
     },
     prefix: 'e!',
-    guildOnly: true
+    guildOnly: true,
+    context: CustomContext
 });
 
 client.load(redirect('/modules')).then(() => console.log('Source loaded!'));
 
 client.connect();
 
+export { client }

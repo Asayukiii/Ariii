@@ -1,4 +1,5 @@
 import { Context, Command, Group, Maker } from 'erine';
+import { CustomContext } from '../../classes/client';
 import { cpus } from 'os';
 
 class Bot extends Maker {
@@ -8,7 +9,7 @@ class Bot extends Maker {
         aliases: ['latency'],
         description: 'Regresa la latencia del shard actual.'
     })
-    async ping(d: Context) {
+    async ping(d: CustomContext) {
         await d.send({
             embeds: [{
                 title: 'Latencia en el shard actual',
@@ -30,7 +31,7 @@ class Bot extends Maker {
         description: 'Muestra información técnica de Erisa.',
         aliases: ['about']
     })
-    async info(d: Context) {
+    async info(d: CustomContext) {
         await d.send({
             embeds: [{
                 title: 'Acerca de '.concat(d.bot.user.tag),
