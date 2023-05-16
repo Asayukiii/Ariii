@@ -1,0 +1,6 @@
+# Folds
+node_modules
+
+# Archive
+pnpm-lock.yaml
+.ENV

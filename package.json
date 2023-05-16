@@ -1,0 +1,26 @@
+{
+  "name": "erisa-ts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "ts-node src/index.ts",
+    "build": "tsc -p tsconfig.json"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.4.0",
+    "colors": "^1.4.0",
+    "dotenv": "^16.0.3",
+    "erine": "3.2.0-dev",
+    "midb": "^2.0.0",
+    "midou.ts": "^1.0.2",
+    "tslib": "^2.5.0"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4"
+  }
+}
