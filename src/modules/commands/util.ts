@@ -1,5 +1,4 @@
 import { Context, Command, Group, Maker, Param, ParamType } from 'erine';
-import { Interpreter } from '../../classes/interpreter';
 
 class Util extends Maker {
     @Group({ name: 'util', fallback: true })
@@ -15,10 +14,8 @@ class Util extends Maker {
         ellipsis: true
     })
     async ping(d: Context) {
-        const text = d.get<string>('script'),
-        // @ts-ignore
-        res = await Interpreter.interprete(text!, { client: d.bot, data: {}, context: d });
-        await d.send(res.code);
+        const text = d.get<string>('script');
+        await d.send(text!);
     }
 }
 
