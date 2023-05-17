@@ -15,8 +15,9 @@ class Util extends Maker {
         ellipsis: true
     })
     async say(d: CustomContext) {
-        const text = d.get<string>('script');
-        await d.send(d.embedParser.parse(text!));
+        const text = d.get<string>('script'),
+            data = await d.embedParser.parse(text!, d);
+        await d.send(data);
     }
 }
 
