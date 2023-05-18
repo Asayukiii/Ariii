@@ -5,8 +5,7 @@ export * from './interpreter'
 
 declare global {
     interface String {
-        escape(): string | null
-        unescape(): string | null
-        resolve(d: CustomContext): string
+        escape(): string;
+        unescape(): string;
     }
 }

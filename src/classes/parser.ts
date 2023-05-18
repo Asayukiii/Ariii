@@ -1,5 +1,4 @@
 import { Builders, CreateMessageOptions, EmbedOptions } from 'erine';
-import { CustomContext } from './client';
 
 export class EmbedParser {
     public content: string;
@@ -14,35 +13,35 @@ export class EmbedParser {
      * @param code 
      * @returns 
      */
-    public async parse(code: string, d: CustomContext): Promise<CreateMessageOptions> {
+    public parse(code: string): CreateMessageOptions {
         this.clear();
         if (!code.includes('$newEmbed[')) return { content: code, embeds: this.embeds };
         const embedData = code.split('$newEmbed[').slice(1);
         for (const data of embedData) {
             const embed = new Builders.EmbedBuilder();
             if (this.check(data, 'setTitle')) {
-                embed.setTitle(await this.unpack(data, 'setTitle', d));
+                embed.setTitle(this.unpack(data, 'setTitle'));
             };
             if (this.check(data, 'setThumbnail')) {
-                embed.setThumbnail(await this.unpack(data, 'setThumbnail', d));
+                embed.setThumbnail(this.unpack(data, 'setThumbnail'));
             };
             if (this.check(data, 'setDescription')) {
-                embed.setDescription(await this.unpack(data, 'setDescription', d));
+                embed.setDescription(this.unpack(data, 'setDescription'));
             };
             if (this.check(data, 'setImage')) {
-                embed.setImage(await this.unpack(data, 'setImage', d));
+                embed.setImage(this.unpack(data, 'setImage'));
             };
             if (this.check(data, 'setColor')) {
-                embed.setColor(parseInt(await this.unpack(data, 'setColor', d), 16));
+                embed.setColor(parseInt(this.unpack(data, 'setColor'), 16));
             };
             if (this.check(data, 'setFooter')) {
-                const splits = this.splits(await this.unpack(data, 'setFooter', d));
+                const splits = this.splits(this.unpack(data, 'setFooter'));
                 splits.length > 1 
-                    ? embed.setFooter(splits[0])
-                    : embed.setFooter(splits[0], splits[1]);
+                    ? embed.setFooter(splits[0], splits[1])
+                    : embed.setFooter(splits[0]);
             };
             if (this.check(data, 'addField')) {
-                const splits = this.splits(await this.unpack(data, 'addField', d));
+                const splits = this.splits(this.unpack(data, 'addField'));
                 embed.addField(splits[0], splits[1], Boolean(splits[2]) ?? false);
             };
             this.embeds.push(embed.toJSON());
@@ -66,7 +65,7 @@ export class EmbedParser {
      * @param sample Function match.
      * @returns {string}
      */
-    private async unpack(src: string, sample: EmbedFunction, d: CustomContext): Promise<string> {
+    private unpack(src: string, sample: EmbedFunction): string {
         return src.split(`$${sample}[`).slice(1).join('').split(']').slice(0, 1).join('').trim();
     }
 
