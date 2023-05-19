@@ -1,6 +1,6 @@
-import { Context, Command, Group, Maker, Member, Param, ParamType } from 'erine';
+import { Command, Group, Maker, Member, Param, ParamType } from 'erine';
 import { CustomContext } from '../../classes/client';
-import axios, { AxiosResponse } from 'axios';
+import axios from 'axios';
 
 class Anime extends Maker {
     @Group({ name: 'anime', fallback: false })

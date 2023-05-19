@@ -1,4 +1,4 @@
-import { Context, Command, Group, Maker, Param, ParamType } from 'erine';
+import { Command, Group, Maker, Param, ParamType } from 'erine';
 import { CustomContext } from '../../classes/client';
 
 class Util extends Maker {

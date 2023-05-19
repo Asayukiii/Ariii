@@ -1,10 +1,11 @@
 import { AnyError, Errors, Event, Maker, ApplicationCommandOptionTypes } from 'erine';
+import { Timeout } from 'midou.ts';
 
 class Listeners extends Maker {
     @Event
     async ready() {
         this.bot.fold.sync().then(() => console.log('[/] - Slash commands updated!'));
-        console.log(this.bot.user.tag.concat(' is successfully conected!'));
+        console.log(this.bot.user.username.concat(' is successfully started!'));
     }
 
     @Event

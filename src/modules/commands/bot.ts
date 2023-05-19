@@ -1,4 +1,4 @@
-import { Context, Command, Group, Maker } from 'erine';
+import { Command, Group, Maker } from 'erine';
 import { CustomContext } from '../../classes/client';
 import { cpus } from 'os';
 
