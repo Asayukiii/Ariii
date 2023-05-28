@@ -292,6 +292,34 @@ class Anime extends Maker {
             }]
         })
     }
+
+    @Group({ name: 'anime' })
+    @Command({
+        name: 'search',
+        description: 'Busca un anime en internet.'
+    })
+    @Param(ParamType.String, {
+        name: 'nombre',
+        description: 'El nombre del anime.',
+        required: true,
+        ellipsis: true
+    })
+    async search(d: CustomContext) {
+        await d.defer();
+        const NAME = d.get<string>('nombre'),
+            response = await axios.get('https://api.daimon-bot.ga/anime/search?type=anime&name=' + NAME),
+            { data } = response;
+        if (response.status !== 200) return await d.followUp({ content: 'Respuesta inválida del servidor.' });
+        await d.followUp({
+            embeds: [{
+                title: data['data'][0]['title'],
+                thumbnail: {
+                    url: data['data'][0]['thumbnail']
+                },
+                color: 0xCCE5FF
+            }]
+        })
+    }
 }
 
 export const data = Anime;
@@ -302,5 +330,22 @@ interface APIResponse {
     data: {
         name: string;
         url: string;
+    }
+}
+
+interface AnimeData {
+    data: {
+        thumbnail: string,
+        url: string,
+        video: string | null,
+        shortDescription: string,
+        title: string,
+        type: string,
+        vols: string,
+        score: string,
+        startDate: string,
+        endDate: string,
+        members: string,
+        nbChapters: string
     }
 }

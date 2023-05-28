@@ -15,9 +15,7 @@ Este simboliza el final de los parámetros de la función.
 Este simboliza el separador de parámetros de la función.
 ### Ejemplo
 ```javascript
-`
 $funcion[PARAM_1;PARAM_2;PARAM_3]
-`
 ```
 
 ## ¿Cómo crear embeds?
@@ -34,12 +32,10 @@ Para crear un embed debes usar la función: `$newEmbed[]` y dentro de estas usar
 
 ### Ejemplo
 ```javascript
-`
 $newEmbed[
     $setTitle[Mi primer embed con Erisa]
     $setDescription[¡Que bonito se ve! uwu]
     $setColor[2F3136]
 ]
-`
 ```
 PD: Para crear múltiples embeds en un sólo mensaje, puedes usar `$newEmbed` hasta 25 veces por mensaje.

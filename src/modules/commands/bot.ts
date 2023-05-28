@@ -56,7 +56,7 @@ class Bot extends Maker {
                 },{
                     name: 'Sistema',
                     value: [
-                        `Uso de CPU:${await cpu()} %`,
+                        `Uso de CPU:${cpu()} %`,
                         `Uso de RAM:${(process.memoryUsage()['heapUsed'] / 1024 / 1024).toFixed(2)} MB`
                     ].map((str: string) => `**${str.split(':')[0]}**: ${str.split(':')[1]}`).join('\n')
                 }],
@@ -71,7 +71,7 @@ class Bot extends Maker {
 
 export const data = Bot
 
-async function cpu() {
+function cpu() {
     // @ts-ignore
     const avgs = cpus().map(cpu => {
         const total: any = Object.values(cpu.times).reduce((a: any, b: any) => a + b);
