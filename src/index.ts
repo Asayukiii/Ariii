@@ -1,6 +1,5 @@
 import { ActivityTypes } from 'erine';
 import { CustomContext, Erisa } from './classes/client';
-import { data } from './modules/listeners/events';
 import dotenv from 'dotenv';
 
 const TOKEN: any = dotenv.config().parsed?.['TOKEN']

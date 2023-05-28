@@ -1,13 +1,14 @@
-import { SetupOptions } from 'erine/sand/classes/Bot';
-import { Events } from 'erine';
-import { DatabaseOptions } from 'midb';
-import { Timeout } from 'midou.ts';
+import type { SetupOptions } from 'erine/sand/classes/Bot';
+import type { ClientEvents } from 'erine';
+import type { Database, DatabaseOptions } from 'midb';
+import type { Timeout } from 'midou.ts';
 
 export interface ErisaOptions extends SetupOptions {
     database: DatabaseOptions;
 }
 
-export interface CustomEvents extends Events {
+export interface CustomEvents extends ClientEvents {
     timeoutAdd: [timeoutData: Timeout];
     timeoutRemove: [timeoutData: Timeout];
+    timeoutExpired: [timeoutData: Timeout];
 }
