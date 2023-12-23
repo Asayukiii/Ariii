@@ -1,7 +1,7 @@
-# Folds
+# Folders
 node_modules
-src/db
+internal
 
-# Archive
+# Files
+.env
 pnpm-lock.yaml
-.ENV
