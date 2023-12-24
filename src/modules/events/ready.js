@@ -18,7 +18,10 @@ async function code(bot) {
 
     bot.sync()
         .then(() => Console.Success('- - > Commands successfully synced.'))
-        .catch(() => Console.Error('- - > Cannot sync commands!'))
+        .catch((reject) => {
+            Console.Error('- - > Cannot sync commands!')
+            console.error(reject)
+        })
     
     bot.db
         .once('ready', () => Console.Success('- - > Database connected.'))
